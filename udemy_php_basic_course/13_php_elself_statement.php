@@ -14,7 +14,7 @@
     if ($x < 50) {
     	echo "F";
     }else if ($x >= 50 ) {
-    	// code...
+    	
     }
     
 	?>
