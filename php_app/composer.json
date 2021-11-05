@@ -1,0 +1,16 @@
+{
+    "name": "ashin/app",
+    "autoload": {
+        "psr-4": {
+            "Libs\\": "src/_classes/Libs",
+            "Helpers\\": "src_classes/Helpers"
+        }
+    },
+    "authors": [
+        {
+            "name": "MyintLwanCoder",
+            "email": "myintlwancoder2021@gmail.com"
+        }
+    ],
+    "require": {}
+}

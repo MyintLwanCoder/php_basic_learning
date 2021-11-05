@@ -1,74 +1,92 @@
-<?php include_once "include/head.php" ?>
-<?php include_once "include/db.php"?>
-<!-- Navigation -->
-
-
+<?php
+    include_once "include/head.php";
+    include_once "include/db.php";
+?>
+<br><br><br>
+    <!-- Navigation -->
 <?php include_once "include/nav.php" ?>
-<!-- page Content -->
-<div class="container">
-    <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
 
-         <?php
-             $query="SELECT * FROM posts";
-             $result = mysqli_query($connect,$query);
+    <!-- Page Content -->
+    <div class="container">
 
-             if (!$result) {
-               die('Query Failed ' . mysqli_error($result));     
-             }
+        <div class="row">
 
-             while ($row = mysqli_fetch_assoc($result)) {
-                 $post_title = $row['post_title'];
-                 $post_author = $row['post_author'];
-                 $post_date = $row['post_date'];
-                 $post_images = $row['post_images'];
-                 $post_content = $row['post_content'];
-                ?>
-                 <h2>
-                 <a href="#"><?php echo $post_title; ?></a>
-             </h2>
-             <p class="lead">
-                 by <a href="index.php"><a href="#"><?php echo $post_author; ?></a></a>
-             </p>
-             <p><span class="glyphicon glyphicon-time"></span>2021-11-27</p>
-             <hr>
-             <img class="img-responsive" src="images/<?php echo $post_images ?>" alt="">
-             <hr> 
-             <p><a href="#"><?php echo $post_content; ?></a></p>
-             <a class="btn btn-primary"  href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-             <hr>
-             <hr>
-             <!-- Pager -->
-             <ul class="pager">
-                 <li class="previous">
-                     <a href="#">&larr; Older</a>
-                 </li>
-                 <li class="next">
-                     <a href="#">Newer &rarr;</a>
-                 </li>
-             </ul>
-     
-             </div>
-             <!-- Blog Sidebar Widgets Column -->
-             <div class="col-md-4">
-             <?php include_once "include/sider.php"?>
-             </div>
-             </div>
-             
-         <!-- /.row -->
-     
-         <hr>
-         <?php
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+            <?php
+                $query ="SELECT * FROM posts";
+                $result = mysqli_query($connect,$query);
 
-             }
-         
-         ?>
-        <!--  Blog Post -->
-        
+                if(!$result){
+                    die('Query Failed ' . mysqli_error($result));
+                }
 
-    <!-- footer -->  
-    <?php include_once "include/sider.php"?>
-    <?php include_once "include/footer.php"?>
+                while($row = mysqli_fetch_assoc($result)){
+                    $post_id = $row['post_id'];
+                    $post_title = $row['post_title'];
+                    $post_author = $row['post_author'];
+                    $post_date = $row['post_date'];
+                    $post_image = $row['post_image'];
+                    $post_content = substr($row['post_content'],0,200);
+            ?>
+                   <h2>
+                        <a href="post.php?p_id=<?php echo $post_id ?>"><?php echo $post_title; ?></a>
+                    </h2>
+                    <p class="lead">
+                        by <a href="author_post.php?author=<?php echo $post_author ?>&p_id=<?php echo $post_id ?>"><?php echo $post_author; ?></a>
+                    </p>
+                    <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date; ?></p>
+                    <hr>
+                    <a href="post.php?p_id=<?php echo $post_id ?>">
+                        <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="" width=1000px>
+                    </a>
+                    
+                    <hr>
+                    <p><?php echo $post_content; ?></p>
+                    <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
+                    <hr>
+            <?php
+                    }
     
+            ?>
+                <!-- Blog Post -->
+    
+            <!-- pager -->
+            <ul class="pager">
+                <li class="previous">
+                    <a href="#">&larr; Older</a>
+                </li>
+                <li class="next">
+                    <a href="#">Newer &rarr;</a>
+                </li>
+                <?php ?>
+                    <!-- for($i=1;$i<=$count;$i++){
+                        if($i == $page){
+                            echo "<li><a class='active_link' href='index.php?page=$i'>$i</a></li>";	    
+                        }else{
+                            echo "<li><a href='index.php?page=$i'>$i</a></li>";	
+                        }
+
+                        
+                    } -->
+                
+                
+               
+            </ul>
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+<?php include_once "include/sidebar.php" ?>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+<?php include_once "include/footer.php"; ?>
