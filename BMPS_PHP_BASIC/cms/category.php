@@ -14,10 +14,10 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
             <?php
-                if (isset($_GET['category'])) {
-                    $post_category_id = $_GET['category'];
-                }else
-                $query ="SELECT * FROM posts WHERE post_category_id=$post_category_id";
+               if (isset($_GET['category'])) {
+                   $p_id = $_GET['category'];
+            }
+            $query ="SELECT * FROM posts WHERE post_category_id=$p_id";
                 $result = mysqli_query($connect,$query);
 
                 if(!$result){
@@ -49,28 +49,48 @@
                     <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                     <hr>
-            <?php
-                    }
-    
-            ?>
             <!-- Comments Form -->
-                <div class="well">
+            <div class="well">
                     <h4>Leave a Comment:</h4>
                     <form role="form" action="" method="post">
-                       <div class="form-group">
-                           <input type="text" name="comment_author" class="form-control" placeholder="Please Enter Your Name">
-                       </div>
-                           <div class="form-group">
-                           <input type="email" name="comment_email" class="form-control" placeholder="Please Enter Your Email Address">
-                       </div>
                         <div class="form-group">
                             <textarea class="form-control" rows="3" name="comment_content" placeholder="Please Enter Your Comment"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" name="create_comment">Submit</button>
                     </form>
                 </div>
+            <!--comment  -->
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/64x64" alt="" >
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Start Bootstrap
+                        <small>Auguse 25, 2014 at 9:30 PM</small>
+                    </h4>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, maxime. Aliquid laboriosam nobis autem nesciunt ab rem accusamus suscipit? Quam itaque temporibus nihil velit soluta voluptas provident ipsa, rem excepturi.
+                    <!-- Nested comment -->
+                    <div class="media">
+                        <a class="pull-left">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="" >
+                        </a>
+                        <div class="media-body">
+                        <h4 class="media-heading">Start Bootstrap
+                        <small>Auguse 25, 2014 at 9:30 PM</small>
+                    </h4>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, maxime. Aliquid laboriosam nobis autem nesciunt ab rem accusamus suscipit? Quam itaque temporibus nihil velit soluta voluptas provident ipsa, rem excepturi.
+                        </div>
+                    </div>
+                    <!-- emd Nested -->
+                </div>
+            </div>
 
                 <hr>
+                <?php
+                    }
+    
+            ?>
+
     
             <!-- pager -->
             <ul class="pager">
@@ -80,17 +100,6 @@
                 <li class="next">
                     <a href="#">Newer &rarr;</a>
                 </li>
-                <?php ?>
-                    <!-- for($i=1;$i<=$count;$i++){
-                        if($i == $page){
-                            echo "<li><a class='active_link' href='index.php?page=$i'>$i</a></li>";	    
-                        }else{
-                            echo "<li><a href='index.php?page=$i'>$i</a></li>";	
-                        }
-
-                        
-                    } -->
-                
                 
                
             </ul>
@@ -110,4 +119,3 @@
 
         <!-- Footer -->
 <?php include_once "include/footer.php"; ?>
-                

@@ -30,8 +30,6 @@
     $post_tag = $_POST['post_tag'];
     $post_content = $_POST['post_content'];
     $post_date = date('d-m-y');
-    $post_comment_count = 4;
-    
     move_uploaded_file($post_image_temp,"../images/$post_image");
     if (empty($post_image)) {
         $query = "SELECT * FROM posts WHERE post_id = $post_id";
@@ -41,7 +39,7 @@
         }
     }
     
-    $query ="UPDATE posts SET post_category_id=$post_category,post_title='$post_title', post_author='$post_author',post_date=$post_date,post_image='$post_image', post_content='$post_content',post_tag='$post_tag',post_comment_count=$post_comment_count, post_status='$post_status' WHERE post_id = $post_id ";
+    $query ="UPDATE posts SET post_category_id=$post_category,post_title='$post_title', post_author='$post_author',post_date=$post_date,post_image='$post_image', post_content='$post_content',post_tag='$post_tag', post_status='$post_status' WHERE post_id = $post_id ";
     $result = mysqli_query($connect,$query);
     
     if(!$result){

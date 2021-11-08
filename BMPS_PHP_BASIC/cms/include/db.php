@@ -13,6 +13,4 @@ $connect=mysqli_connect (DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
 if(!$connect){
   echo "Database Not Connected";
-}else{
-  echo "Database";
 }

@@ -22,13 +22,13 @@
                    $source='';
                }
                switch ($source) {
-                   case 'add_post':
+                   case 'add_user':
                 //  echo 'Nice Value 100';
-                   include_once "include_admin/add_post.php";
+                   include_once "include_admin/add_user.php";
                    break;
 
-                   case 'edit_post':
-                   include_once "include_admin/edit_post.php";
+                   case 'edit_user':
+                   include_once "include_admin/edit_user.php";
                    break;
 
                     case '200':
@@ -36,10 +36,11 @@
                     break;
                    
                    default:
-                   include_once 'include_admin/view_all_post.php';
+                   include_once 'include_admin/view_all_users.php';
                    break;
                }
               ?>
           </div>
           <!-- /.row -->
 <?php include_once "include_admin/admin_footer.php";?>
+<?php include_once "include_admin/admin_header.php";?>

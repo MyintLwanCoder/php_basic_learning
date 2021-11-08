@@ -52,7 +52,7 @@
                               $cat_title = $row['cat_title'];
                               ?>
                               <li>
-                                  <a href="category.php?category=$cat_id"><?php echo $cat_title ?></a>
+                                  <a href="category.php?category=<?php echo $cat_id ?>"><?php echo $cat_title ?></a>
                               </li>
                          <?php
                           }

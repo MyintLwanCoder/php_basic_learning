@@ -11,11 +11,11 @@
         $post_tag = $_POST['post_tag'];
         $post_content = $_POST['post_content'];
         $post_date = date('d-m-y');
-        $post_comment_count = 4;
+       
         move_uploaded_file($post_image_temp,"../images/$post_image");
         
-        $query ="INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tag, post_status) ";
-        $query .= "VALUES ($post_category,'$post_title','$post_author','$post_date', '$post_image','$post_content','$post_tag','$post_status')";
+        $query ="INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_tag, post_status) ";
+        $query .= "VALUES ($post_category,'$post_title','$post_author','$post_date', '$post_image','$post_tag','$post_status')";
         
         $result = mysqli_query($connect,$query);
         
@@ -26,7 +26,6 @@
 
 
 ?>
- 
  <form action="" method="post" enctype="multipart/form-data">
 
      <div class="form-group">

@@ -36,10 +36,11 @@
                     break;
                    
                    default:
-                   include_once 'include_admin/view_all_post.php';
+                   include_once 'include_admin/view_all_comment.php';
                    break;
                }
               ?>
           </div>
           <!-- /.row -->
 <?php include_once "include_admin/admin_footer.php";?>
+<?php include_once "include_admin/admin_header.php";?>
